@@ -1,0 +1,76 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>Cordova</title>
+<script type="text/javascript" charset="utf-8" src="js/cordova-2.2.0rc2.js"></script>
+<link rel="stylesheet" type="text/css" href="css/application.css" />
+
+<script type="text/javascript" charset="utf-8">
+
+    
+    document.addEventListener("deviceready", onDeviceReady, false);
+
+    
+    function onDeviceReady() {
+    
+    }
+
+
+	function onSuccess(contacts) {
+	    var html = '<label style="color:red" >Found ' + contacts.length + ' contacts.</label>';
+	    for(i=0;i<contacts.length;i++)
+	    {
+	    	html += "<div class='btn'>";
+	    	html += contacts[i].name.formatted;
+	    	html += "</div>";
+	    }
+	    document.getElementById("contacts").innerHTML = html;
+	};
+	
+	function onError(contactError) {
+	    alert('onError!');
+	};
+
+	function getContacts()
+	{
+		var q = document.getElementById("q").value;
+		var options = new ContactFindOptions();
+		options.filter=q;
+		options.multiple=true; 
+		var fields = ["displayName", "name"];
+		navigator.contacts.find(fields, onSuccess, onError, options);
+	}
+		
+    </script>
+</head>
+<body>
+<div>
+	<h2 id="top-header">
+		Advanced Visual Frameworks
+	</h2>
+	<button onclick="document.location='index.html'" >
+		Home
+	</button>
+</div>
+<div>
+	<div class="div-box">
+		<h4 class="div-box-header" >
+			Contacts
+		</h4>
+		<div style="padding:10px;">
+			<input type="text" id="q" placeholder="Search Contacts" onkeyup="getContacts()" />
+			<div id="contacts">
+			</div>
+		</div>
+	</div>	
+</div>
+<div>
+	<h6 style="background-color:lightBlue;border:1px solid #ddd;text-align:center;width:100%;">
+	&copy;Carmen John
+	</h6>
+</div>
+</body>
+</html>
+
+
+

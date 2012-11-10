@@ -1,0 +1,86 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>Cordova</title>
+<script type="text/javascript" charset="utf-8" src="js/cordova-2.2.0rc2.js">
+<link rel="stylesheet" type="text/css" href="css/application.css" />
+
+<script type="text/javascript" charset="utf-8">
+
+    
+    document.addEventListener("deviceready", onDeviceReady, false);
+
+    
+    function onDeviceReady() {
+    
+    }
+
+    
+    function alertDismissed() {
+    
+    }
+
+    
+    function showAlert() {
+        navigator.notification.alert(
+            'You are the winner!',  
+            function(){},         
+            'Game Over',            
+            'Ok'                  
+        );
+    }
+
+	
+
+	function onConfirm(buttonIndex) {
+	    alert('You selected button ' + buttonIndex);
+	}
+
+
+	function showConfirm() {
+	    navigator.notification.confirm(
+	        'You are the winner!',  
+	        onConfirm,              
+	        'Game Over',            
+	        'Restart,Exit'          
+	    );
+	}
+	
+    </script>
+</head>
+<body >
+<div>
+	<h2 id="top-header" >
+		Advanced Visual Frameworks
+	</h2>
+	<button onclick="document.location='index.html'" >
+		Home
+	</button>
+</div>
+<div>
+	<div class="div-box" >
+		<h4 class="div-box-header" >
+			Notification
+		</h4>
+		<div style="padding:10px;">
+			
+			<a href="javascript:showAlert();" class="btn" >
+						Alert
+		    </a>
+		    
+		    <a href="#" class="btn" onclick="showConfirm()">
+						Confirm
+			</a>
+		</div>
+	</div>	
+</div>
+<div>
+	<h6 style="background-color:lightBlue;border:1px solid #ddd;text-align:center;width:100%;">
+	&copy;Carmen John
+	</h6>
+</div>
+</body>
+</html>
+
+
+

@@ -1,0 +1,57 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>Cordova</title>
+<script type="text/javascript" charset="utf-8" src="js/cordova-2.1.0.js"></script>
+<script type="text/javascript" charset="utf-8" src="js/jquery.js"></script>
+<script type="text/javascript" charset="utf-8" src="js/jquery.tmpl.js"></script>
+<link rel="stylesheet" type="text/css" href="css/application.css" />
+<script type="text/javascript">
+	function getTweets(q) {
+	var rpp = 5;
+	var	twurl = "http://search.twitter.com/search.json?q=";
+	$.getJSON(twurl + q + "&rpp=" + rpp + "&callback=?", function(data)
+	{
+		$("#tmpl-tweets").tmpl(data.results).appendTo("#tweets");
+	});
+}
+</script>
+</head>
+<body>
+<div>
+	<h2 id="top-header" >
+		Advanced Visual Frameworks
+	</h2>
+	<button onclick="document.location='index.html'" >
+		Home
+	</button>
+</div>
+<div>
+	<div class="div-box" >
+		<h4 class="div-box-header" >
+			Get Tweets
+		</h4>
+		<div style="padding:10px;">
+			<input type="text" name="q" id="q" />
+			<input type="button" value="get" onclick="getTweets($(q).val())" />
+			<div id="twitter" class="current">
+				<ul id="tweets">
+				</ul>
+				<script id="tmpl-tweets" type="text/x-jquery-tmpl">
+			    	<li class="btn" style="height:auto">
+						<a class="avatar" href="#"><img src="${profile_image_url}" alt="${from_user}"></a>
+						<a href="http://twitter.com/${from_user}"><h2>${from_user}</h2></a>
+						<span class="details">${text} </span>
+					</li>
+				</script>
+			</div>							
+		</div>
+	</div>	
+</div>
+<div>
+	<h6 style="background-color:lightBlue;border:1px solid #ddd;text-align:center;width:100%;">
+	&copy;Carmen Johnson
+	</h6>
+</div>
+</body>
+</html>
