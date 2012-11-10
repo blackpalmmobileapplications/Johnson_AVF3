@@ -1,0 +1,70 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>Cordova</title>
+<script type="text/javascript" charset="utf-8" src="js/cordova-2.1.0.js"></script>
+<script type="text/javascript" charset="utf-8" src="js/jquery.js"></script>
+
+<link rel="stylesheet" type="text/css" href="css/application.css" />
+<script type="text/javascript">
+	function getProfile(q)
+	{
+	
+		$.getJSON("http://graph.facebook.com/"+ q +"&callback=?", function(data){
+			$("#fbprofile").html("");
+		
+			if(data.error)
+			{
+				$("#fbprofile").html("<li>Not found or error getting information.s</li>");
+				return;
+			}
+			
+			
+			$.each(data, function(key, value){
+				var spanLeft = $("<span></span>");
+				spanLeft.html(key+":&emsp;");
+				
+				var spanRight = $("<span></span>");
+				spanRight.html(value);
+				
+				var li = $("<li class='btn' style='height:auto' ></li>");
+				li.append(spanLeft);
+				li.append(spanRight);
+				
+				$("#fbprofile").append(li);
+			});
+		
+		});
+	}
+</script>
+</head>
+<body>
+<div>
+	<h2 id="top-header" >
+		Advanced Visual Frameworks
+	</h2>
+	<button onclick="document.location='index.html'" >
+		Home
+	</button>
+</div>
+<div>
+	<div class="div-box" >
+		<h4 class="div-box-header" >
+			Facebook User Info
+		</h4>
+		<div style="padding:10px;">
+			<input type="text" name="q" id="q" />
+			<input type="button" value="get" onclick="getProfile($(q).val())" /> 
+			<ul id="fbprofile" class="current">
+				
+			</ul>							
+		</div>
+	</div>	
+</div>
+<div>
+	<h6 style="background-color:lightBlue;border:1px solid #ddd;text-align:center;width:100%;">
+	&copy;Carmen Johnson
+	</h6>
+</div>
+</body>
+</html>

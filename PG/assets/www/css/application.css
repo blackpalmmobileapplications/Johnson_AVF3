@@ -1,0 +1,67 @@
+	
+	*
+	{
+		padding:0;
+		margin:0;
+	}
+	body
+	{
+		background-color:#ccc;
+		margin:0px;
+		padding-left:0;
+		padding-right:0;
+	}
+	
+	#top-header
+	{
+		background-color:lightBlue;
+		border:1px solid #ddd;
+		text-align:center;
+		width:100%;
+	}
+	
+	.div-box
+	{
+		margin:10px;
+		border:1px solid #ddd;
+		text-align:center;
+		background-color:lightGreen;
+	}
+	
+	.div-box-header
+	{
+		border-bottom:1px solid #ddd;
+		height:20px;
+	}
+	
+	.btn
+	{
+		display:block;
+		text-decoration:none;
+		color:black;
+		height:25px;
+		background-color:lightBlue;
+		border:1px solid #ddd;
+		padding:5px;
+		text-align:left;
+	}
+	
+	ul#tweets, ul#fbprofile
+	{
+		list-style:none;
+		text-align:left;
+	}
+	
+	.btn:hover
+	{
+		background-color:blue;
+	}
+	.width33
+	{
+		width:32%;
+		margin:10px;
+	}
+	.table td
+	{
+		margin:5px;
+	}
